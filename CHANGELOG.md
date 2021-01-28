@@ -13,6 +13,8 @@ These are changes that will probably be included in the next release.
 ### Fixed
 
 ### Changed
+
+ - Major rework for conformance with W3C N-Quads test suite
  
 ### Removed
 

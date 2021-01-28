@@ -1,13 +1,38 @@
-nquads - a basic nquads parser in Go
+# nquads - a basic nquads parser in Go
 
 [![Build Status](https://travis-ci.org/iand/nquads.svg?branch=master)](https://travis-ci.org/iand/nquads)
 [![Go Report Card](https://goreportcard.com/badge/github.com/iand/nquads)](https://goreportcard.com/report/github.com/iand/nquads)
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/iand/nquads)
 
+## Overview
+
+[N-Quads](https://www.w3.org/TR/n-quads/) is a serialisation format for [RDF datasets](https://www.w3.org/TR/rdf11-concepts/#section-dataset).
+A dataset consists of a default graph with no name and zero or more named graphs where a graph is a composed of a set of triples. The default 
+graph may be empty. 
+
+An N-Quads file is a line-oriented format where each triple or quad statement is terminated by a period `.`.
+
+ - IRIs are enclosed by `<` and `>`
+ - Literals have a lexical value enclosed by `"` followed by an optional language tag using `@` as a delimiter, or a data type IRI using `^^` as a delimiter
+ - Blank nodes have a lexical label prefixed by `_:` and the same label denotes the same blank node throughout the file.
+
+A triple in a named graph may be written as a statement using four terms, the last of which is the name of the graph:
+
+```
+<http://example/s> <http://example/p> <http://example/o> <http://example/g> .
+```
+
+A triple in the default graph omits the fourth term:
+
+```
+<http://example/s> <http://example/p> <http://example/o> <http://example/g> .
+```
+
 ## Getting Started
 
 Example of parsing an nquads file and printing out every 5000th quad
 
+```Go
 	package main
 
 	import (
@@ -17,7 +42,7 @@ Example of parsing an nquads file and printing out every 5000th quad
 	)	
 
 	func main() {
-		nqfile, err := os.Open("myquads.nt")
+		nqfile, err := os.Open("myquads.nq")
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %s", err.Error())
 			os.Exit(1)
@@ -41,7 +66,7 @@ Example of parsing an nquads file and printing out every 5000th quad
 		}
 
 	}
-
+```
 
 ## Author
 
@@ -54,4 +79,4 @@ information, see <http://unlicense.org/> or the accompanying [`UNLICENSE`](UNLIC
 
 ## Credits
 
-The design and logic is hugely inspired by Go's standard csv parsing library
+The design and logic is inspired by Go's standard csv parsing library
