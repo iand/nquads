@@ -25,7 +25,7 @@ A triple in a named graph may be written as a statement using four terms, the la
 A triple in the default graph omits the fourth term:
 
 ```
-<http://example/s> <http://example/p> <http://example/o> <http://example/g> .
+<http://example/s> <http://example/p> <http://example/o> .
 ```
 
 ## Getting Started
