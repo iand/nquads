@@ -8,7 +8,6 @@ package nquads
 import (
 	"errors"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
@@ -22,7 +21,6 @@ var parseCases = []struct {
 	inline   string
 	quads    []Quad
 }{
-
 	{
 		name:   "",
 		inline: "<http://example.org/resource1> <http://example.org/property> <http://example.org/resource2> <http://example.org/graph1> .",
@@ -61,7 +59,7 @@ var parseCases = []struct {
 		},
 	},
 	{
-		name: "",
+		name:   "",
 		inline: "	 <http://example.org/resource3> 	 <http://example.org/property>	 <http://example.org/resource2> 	   <http://example.org/graph1>    .",
 		quads: []Quad{
 			{
@@ -263,7 +261,6 @@ var positiveSyntaxCases = []struct {
 	filename string
 	inline   string
 }{
-
 	{
 		name:     "w3c-comment_following_triple",
 		filename: "testdata/w3c-test-suite/comment_following_triple.nq",
@@ -492,7 +489,6 @@ var negativeSyntaxCases = []struct {
 	inline   string
 	err      error
 }{
-
 	{
 		name:   "no-terminating-dot",
 		inline: "<http://example.org/graph1> <http://example.org/resource1> <http://example.org/property> <http://example.org/resource2> ",
@@ -756,7 +752,7 @@ func TestParse(t *testing.T) {
 					t.Fatalf("failed to open test file %s: %v", tc.filename, err)
 				}
 			} else if tc.inline != "" {
-				r = ioutil.NopCloser(strings.NewReader(tc.inline))
+				r = io.NopCloser(strings.NewReader(tc.inline))
 			} else {
 				t.Fatal("invalid test case: expecting one of filename or inline to be specified")
 			}
@@ -792,7 +788,7 @@ func TestPositiveSyntaxCases(t *testing.T) {
 					t.Fatalf("failed to open test file %s: %v", tc.filename, err)
 				}
 			} else if tc.inline != "" {
-				r = ioutil.NopCloser(strings.NewReader(tc.inline))
+				r = io.NopCloser(strings.NewReader(tc.inline))
 			} else {
 				t.Fatal("invalid test case: expecting one of filename or inline to be specified")
 			}
@@ -819,7 +815,7 @@ func TestNegativeSyntaxCases(t *testing.T) {
 					t.Fatalf("failed to open test file %s: %v", tc.filename, err)
 				}
 			} else if tc.inline != "" {
-				r = ioutil.NopCloser(strings.NewReader(tc.inline))
+				r = io.NopCloser(strings.NewReader(tc.inline))
 			} else {
 				t.Fatal("invalid test case: expecting one of filename or inline to be specified")
 			}
