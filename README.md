@@ -1,6 +1,9 @@
-# nquads - a basic nquads parser in Go
+# nquads 
 
-[![Build Status](https://travis-ci.org/iand/nquads.svg?branch=master)](https://travis-ci.org/iand/nquads)
+A basic nquads parser in Go
+
+[![Check Status](https://github.com/iand/nquads/actions/workflows/check.yml/badge.svg)](https://github.com/iand/nquads/actions/workflows/check.yml)
+[![Test Status](https://github.com/iand/nquads/actions/workflows/test.yml/badge.svg)](https://github.com/iand/nquads/actions/workflows/test.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/iand/nquads)](https://goreportcard.com/report/github.com/iand/nquads)
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/iand/nquads)
 
