@@ -274,7 +274,6 @@ func (r *Reader) parseIRI() (term rdf.Term, err error) {
 
 				for i := size - 1; i >= 0; i-- {
 					r1, err = r.readRune()
-
 					if err != nil {
 						if err == io.EOF {
 							return term, r.wrap(ErrUnexpectedEOF)
@@ -516,7 +515,6 @@ func (r *Reader) parseLiteral() (term rdf.Term, err error) {
 
 				for i := size - 1; i >= 0; i-- {
 					r1, err = r.readRune()
-
 					if err != nil {
 						if err == io.EOF {
 							return term, r.wrap(ErrUnexpectedEOF)
